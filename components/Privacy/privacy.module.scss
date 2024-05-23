@@ -1,0 +1,81 @@
+@import "../../styles/breakpoint";
+
+.main {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  inset: 0;
+  z-index: 5;
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s all;
+  transition-delay: 0.3s;
+  pointer-events: none;
+  &[data-active="true"] {
+    pointer-events: all;
+    backdrop-filter: blur(15px);
+    transition-delay: 0s;
+    transform: translateY(0%);
+  }
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: relative;
+  max-width: 900px;
+  background-color: var(--light);
+  border-radius: 24px;
+  border: 1px solid var(--secondary);
+  transform: translateY(140%);
+  transition: 0.4s all;
+  transition-delay: 0s;
+  padding: 20px;
+  margin: 5px;
+  @include lg {
+    padding: 50px;
+  }
+  &[data-active="true"] {
+    transition-delay: 0.3s;
+    transform: translateY(0%);
+  }
+  @include xxl {
+    padding: 70px;
+    gap: 45px;
+  }
+
+  h1 {
+    font-size: 2.125rem;
+    line-height: 3rem;
+    font-weight: 500;
+  }
+  h2 {
+    font-weight: 500;
+  }
+  p {
+    color: var(--primary);
+    font-size: 0.8594rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.close {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  cursor: pointer;
+}

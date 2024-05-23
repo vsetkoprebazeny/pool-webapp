@@ -1,0 +1,17 @@
+@import "../../styles/breakpoint";
+
+.main {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  flex-direction: column-reverse;
+  @include lg {
+    flex-direction: row;
+  }
+  @include lg {
+    overflow: auto;
+    max-height: calc(100vh - 54px - 62px);
+    height: 100%;
+  }
+}

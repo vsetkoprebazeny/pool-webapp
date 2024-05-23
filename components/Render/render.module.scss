@@ -1,0 +1,84 @@
+@import "../../styles/breakpoint";
+.main {
+  width: 100%;
+  background-color: grey;
+  display: flex;
+  height: 50vh;
+  position: relative;
+  @include lg {
+    position: sticky;
+    top: 0%;
+    height: 100%;
+  }
+  &_logo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transform: translateX(-50%) translateY(-50%) rotate(25deg);
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    color: var(--light);
+    opacity: 0.2;
+    pointer-events: none;
+    user-select: none;
+    background-image: url(/logo.png);
+    background-repeat: no-repeat;
+    background-size: 420px 100px;
+    background-position: center;
+  }
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  perspective: 800px;
+}
+
+.loaderCube {
+  position: relative;
+  width: 6em;
+  height: 6em;
+  transform-style: preserve-3d;
+  animation: rotateCube 2s infinite linear;
+}
+
+.loaderSide {
+  position: absolute;
+  width: 6em;
+  height: 6em;
+  background: var(--primary); /* Custom property for theming */
+  border: 0.1em solid #fff; /* Relative sizing for border */
+}
+
+.front {
+  transform: translateZ(3em);
+}
+.back {
+  transform: rotateY(180deg) translateZ(3em);
+}
+.right {
+  transform: rotateY(90deg) translateZ(3em);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(3em);
+}
+.top {
+  transform: rotateX(90deg) translateZ(3em);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(3em);
+}
+
+/* Keyframes for continuous rotation */
+@keyframes rotateCube {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}

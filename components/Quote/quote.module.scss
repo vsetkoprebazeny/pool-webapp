@@ -1,0 +1,190 @@
+@import "../../styles/breakpoint";
+
+.main {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  inset: 0;
+  z-index: 5;
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s all;
+  transition-delay: 0.3s;
+  pointer-events: none;
+  &[data-active="true"] {
+    pointer-events: all;
+    backdrop-filter: blur(15px);
+    transition-delay: 0s;
+    transform: translateY(0%);
+  }
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: relative;
+  background-color: var(--light);
+  border-radius: 24px;
+  border: 1px solid var(--secondary);
+  transform: translateY(140%);
+  transition: 0.4s all;
+  transition-delay: 0s;
+  padding: 20px;
+  margin: 5px;
+  @include lg {
+    padding: 30px;
+    min-width: 900px;
+  }
+  @include xxl {
+    padding: 50px;
+  }
+  &[data-active="true"] {
+    transition-delay: 0.3s;
+    transform: translateY(0%);
+  }
+  @include xxl {
+    padding: 70px;
+    gap: 45px;
+  }
+
+  &_head {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    h1 {
+      font-size: 2.125rem;
+      line-height: 3rem;
+      font-weight: 500;
+    }
+    p {
+      color: var(--primary);
+      font-size: 0.8594rem;
+      line-height: 1.5rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  label {
+    color: var(--label);
+    font-size: 0.8594rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    span {
+      color: red !important;
+    }
+  }
+  input {
+    padding: 19px 17px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    font-size: 0.8516rem;
+    font-weight: 400;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  label {
+    color: var(--label);
+    font-size: 0.8594rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+  }
+  textarea {
+    padding: 19px 17px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    font-size: 0.8516rem;
+    font-weight: 400;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow-y: auto;
+  max-height: 400px;
+  @include lg {
+    max-height: 500px;
+    overflow-y: visible;
+  }
+
+  button {
+    height: 56px;
+    min-height: 56px;
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--light);
+    border-radius: 8px;
+    border: none;
+    font-size: 0.6875rem;
+    font-weight: 700;
+  }
+  &_box {
+    display: grid;
+    gap: 20px;
+    @include lg {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    div {
+      &:nth-child(1) {
+        grid-column: span 2;
+      }
+      &:nth-child(2) {
+        grid-column: span 2;
+      }
+    }
+  }
+  &_boxTwo {
+    display: grid;
+    gap: 20px;
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  &_checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    input {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  label {
+    font-size: 0.8438rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    span {
+      cursor: pointer;
+      color: #007bff;
+    }
+  }
+}
+
+.close {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  cursor: pointer;
+}
