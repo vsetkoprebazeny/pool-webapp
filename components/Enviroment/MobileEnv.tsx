@@ -33,7 +33,7 @@ const MobileEnv = () => {
           second={code === "GB" ? "Night" : "Noc"}
         />
         <Buttons
-          setDefault={true}
+          setDefault={false}
           onClick={handleIsWater}
           first={code === "GB" ? "With Water" : "S vodou"}
           second={code === "GB" ? "Without Water" : "Bez vody"}

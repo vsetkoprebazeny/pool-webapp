@@ -1,6 +1,6 @@
 import { useSnapshot } from "valtio";
-import { RollerCoverBlack } from "./Rollercover/RollerCoverBlack";
 import { store } from "@/store";
+import { RollerCoverBlack } from "./Rollercover/RollerCoverBlack";
 import { RollerCoverElisa } from "./Rollercover/RollerCoverElisa";
 
 const RollerCover = () => {
@@ -32,6 +32,19 @@ const RollerCover = () => {
       ? -0.52
       : -10;
 
+  let positionXX =
+    globalState.length === 4
+      ? -0.33
+      : globalState.length === 5
+      ? -0.385
+      : globalState.length === 6
+      ? -0.435
+      : globalState.length === 7
+      ? -0.495
+      : globalState.length === 8
+      ? -0.54
+      : -10;
+
   let entryDirection = globalState.entry?.slice(7, 20);
 
   let scaleX =
@@ -48,11 +61,11 @@ const RollerCover = () => {
       return (
         <RollerCoverBlack
           position={[
-            positionX,
+            positionXX,
             0.018,
             entryDirection === "right" ? 1.242 : 1.232,
           ]}
-          scale={[scaleX, 0.36, scaleZ]}
+          scale={[scaleX, 0.18, scaleZ]}
           rotation-y={Math.PI * 1.5}
         />
       );
@@ -60,13 +73,13 @@ const RollerCover = () => {
     case "elisa silver":
       return (
         <RollerCoverElisa
-          lineColor="#dcdcdc"
+          lineColor="#b4b4b4"
           position={[
             positionX,
             0.018,
             entryDirection === "right" ? 1.21 : 1.265,
           ]}
-          scale={[scaleX, 0.36, scaleZ]}
+          scale={[scaleX, 0.18, scaleZ]}
           rotation-y={Math.PI * 0.5}
         />
       );
@@ -80,7 +93,7 @@ const RollerCover = () => {
             0.018,
             entryDirection === "right" ? 1.21 : 1.265,
           ]}
-          scale={[scaleX, 0.36, scaleZ]}
+          scale={[scaleX, 0.18, scaleZ]}
           rotation-y={Math.PI * 0.5}
         />
       );

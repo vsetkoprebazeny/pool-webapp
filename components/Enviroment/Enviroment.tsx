@@ -52,7 +52,7 @@ const Enviroment: React.FC<Props> = ({ setIsGetQuote }) => {
           second={code === "GB" ? "Night" : "Noc"}
         />
         <Buttons
-          setDefault={true}
+          setDefault={false}
           onClick={handleIsWater}
           first={code === "GB" ? "With Water" : "S vodou"}
           second={code === "GB" ? "Without Water" : "Bez vody"}
@@ -60,8 +60,8 @@ const Enviroment: React.FC<Props> = ({ setIsGetQuote }) => {
         <Buttons
           setDefault={false}
           onClick={handleCloudy}
-          first={"No Cloudy"}
-          second={"Cloudy"}
+          first={code === "SK" ? "Slnečno" : "No Cloudy"}
+          second={code === "SK" ? "Zamračené" : "Cloudy"}
           disabled={isCloudyDisabled}
         />
       </div>

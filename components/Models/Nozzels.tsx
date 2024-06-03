@@ -13,16 +13,16 @@ const Nozzels = () => {
 
   let minusLenght =
     length === 4
-      ? 0.016
+      ? 0.01
       : length === 5
-      ? 0.014
+      ? 0.008
       : length === 6
-      ? 0.014
+      ? 0.006
       : length === 7
-      ? 0.011
+      ? 0.004
       : length === 8
-      ? 0.011
-      : -0.003;
+      ? 0.002
+      : -0.008;
 
   return (
     <group

@@ -1,30 +1,30 @@
 import * as THREE from "three";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useSnapshot } from "valtio";
-import { store } from "../../../store";
-import { useEffect, useState } from "react";
+import { store } from "@/store";
 
 type GLTFResult = GLTF & {
   nodes: {
-    Line005: THREE.Mesh;
-    stepOne: THREE.Mesh;
-    stepThree: THREE.Mesh;
-    stepFour: THREE.Mesh;
-    stepFive: THREE.Mesh;
-    stepTwo: THREE.Mesh;
+    stair: THREE.Mesh;
+    step02: THREE.Mesh;
+    step01: THREE.Mesh;
+    step03: THREE.Mesh;
+    step04: THREE.Mesh;
+    step05: THREE.Mesh;
   };
   materials: {
-    Material: THREE.MeshStandardMaterial;
-    Material002: THREE.MeshStandardMaterial;
+    stair: THREE.MeshStandardMaterial;
+    step: THREE.MeshStandardMaterial;
   };
 };
 
 export function Stair4(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/stair/stair4.glb") as GLTFResult;
-  const normal = useTexture("/stairnormals.png");
-
   const globalState = useSnapshot(store);
+
+  const normal = useTexture("/stairnormals.png");
 
   const colors = [
     "#fcecc8",
@@ -127,6 +127,7 @@ export function Stair4(props: JSX.IntrinsicElements["group"]) {
     perletoveElbe,
     stonelite,
   ]);
+
   let AT = globalState["alkorplan touch"];
   let ME = globalState["mozaikove elbe"];
   let PE = globalState["perletove elbe"];
@@ -188,56 +189,46 @@ export function Stair4(props: JSX.IntrinsicElements["group"]) {
     JE,
     NE,
   ]);
+
   return (
     <group rotation-y={Math.PI * 1} {...props} dispose={null}>
       <mesh
-        receiveShadow
-        geometry={nodes.Line005.geometry}
-        material={new THREE.MeshStandardMaterial()}
+        geometry={nodes.stair.geometry}
+        material={materials.stair}
         material-map={tilesMap}
-        position={[-0.849, 1.012, 0.719]}
-        scale={0.029}
+        material-metalness={1}
+        material-roughness={1}
+        position={[0.005, 0.415, 0.009]}
       />
-
       <group visible={globalState["anti slip pads"] !== undefined}>
         <mesh
-          receiveShadow
-          geometry={nodes.stepOne.geometry}
-          material-normalMap={normal}
-          material-normalScale={[1.2, 1.2]}
-          material-roughness={0.3}
+          geometry={nodes.step01.geometry}
+          material={materials.step}
+          position={[-0.542, 0.995, 0.434]}
           material-color={colors[globalState["anti slip pads"]!]}
-          material={materials.Material002}
-          position={[-0.849, 1.012, 0.719]}
-          scale={0.029}
+          material-normalMap={normal}
+          material-roughness={0}
+          material-metalness={0}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepThree.geometry}
-          material={materials.Material002}
-          position={[0.296, 0.569, 0.12]}
-          scale={0.029}
+          geometry={nodes.step02.geometry}
+          material={materials.step}
+          position={[-0.372, 0.784, -0.971]}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepFour.geometry}
-          material={materials.Material002}
-          position={[0.608, 0.37, -0.088]}
-          scale={0.029}
+          geometry={nodes.step03.geometry}
+          material={materials.step}
+          position={[0.336, 0.558, 0.108]}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepFive.geometry}
-          material={materials.Material002}
-          position={[0.85, 0.141, -0.303]}
-          scale={0.029}
+          geometry={nodes.step04.geometry}
+          material={materials.step}
+          position={[0.639, 0.379, -0.146]}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepTwo.geometry}
-          material={materials.Material002}
-          position={[-0.849, 1.022, 0.719]}
-          scale={0.029}
+          geometry={nodes.step05.geometry}
+          material={materials.step}
+          position={[0.922, 0.142, -0.388]}
         />
       </group>
     </group>

@@ -1,9 +1,9 @@
 import { useSnapshot } from "valtio";
 import { store } from "../../store";
-import { Stair2 } from "./Stair/Stair2";
 import { Stair3 } from "./Stair/Stair3";
-import { Stair4 } from "./Stair/Stair4";
+import { Stair2 } from "./Stair/Stair2";
 import { Stair1 } from "./Stair/Stair1";
+import { Stair4 } from "./Stair/Stair4";
 
 const Stairs = () => {
   const { entry, width, length, depth } = useSnapshot(store);

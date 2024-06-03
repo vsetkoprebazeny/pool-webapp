@@ -54,11 +54,11 @@ export const data: Data[] = [
   },
   {
     title: "floors",
-    titleSK: "Dlažba",
+    titleSK: "Podlaha",
     moreStep: false,
     options: [
       { title: "White stone", value: 0, options: [] },
-      { title: "Being stone", value: 1, options: [] },
+      { title: "Beige stone", value: 1, options: [] },
       { title: "Pietro grey", value: 2, options: [] },
       { title: "Selene", value: 3, options: [] },
       { title: "Serena mix", value: 4, options: [] },
@@ -77,6 +77,16 @@ export const data: Data[] = [
     titleSK: "Fólia",
     moreStep: true,
     options: [
+      {
+        title: "Jednofarebne ELBE SUPRA",
+        options: [
+          { title: "ADRIATIC BLUE", value: 0, color: "#84c9e1" },
+          { title: "LIGHT BLUE", value: 1, color: "#d9e4ea" },
+          { title: "LIGHT GREY", value: 2, color: "#bbbec3" },
+          { title: "SAND", value: 3, color: "#e8e7e2" },
+          { title: "WHITE", value: 4, color: "#e9eaec" },
+        ],
+      },
       {
         title: "ALKORPLAN TOUCH",
         options: [
@@ -114,16 +124,7 @@ export const data: Data[] = [
           { title: "GREY", value: 3, color: "#d2d4d8" },
         ],
       },
-      {
-        title: "Jednofarebne ELBE SUPRA",
-        options: [
-          { title: "ADRIATIC BLUE", value: 0, color: "#84c9e1" },
-          { title: "LIGHT BLUE", value: 1, color: "#d9e4ea" },
-          { title: "LIGHT GREY", value: 2, color: "#bbbec3" },
-          { title: "SAND", value: 3, color: "#e8e7e2" },
-          { title: "WHITE", value: 4, color: "#e9eaec" },
-        ],
-      },
+
       {
         title: "Novinkove ELBE",
         options: [
@@ -225,20 +226,20 @@ export const data: Data[] = [
     moreStep: false,
     options: [
       {
-        title: "Prima (Actual)",
-        titleSK: "Prima (Actual)",
+        title: "Prima",
+        titleSK: "Prima",
         value: "prima black",
         options: [],
       },
       {
-        title: "Elisa Antracit (new)",
-        titleSK: "Elisa Antracit (new)",
+        title: "Elisa Antracit",
+        titleSK: "Elisa Antracit",
         value: "elisa black",
         options: [],
       },
       {
-        title: "Elisa Silver (new)",
-        titleSK: "Elisa Silver (new)",
+        title: "Elisa Silver",
+        titleSK: "Elisa Silver",
         value: "elisa silver",
         options: [],
       },
@@ -246,16 +247,16 @@ export const data: Data[] = [
   },
   {
     title: "heat pump",
-    titleSK: "heat pump",
+    titleSK: "Tepelné čerpadlo",
     moreStep: false,
     options: [
-      { title: "Black", titleSK: "black", value: "black", options: [] },
-      { title: "Silver", titleSK: "sliver", value: "silver", options: [] },
+      { title: "MICROWELL", titleSK: "MICROWELL", value: "black", options: [] },
+      { title: "SILENCE", titleSK: "SILENCE", value: "silver", options: [] },
     ],
   },
   {
     title: "technology house",
-    titleSK: "technology house",
+    titleSK: "Tech. domček",
     moreStep: false,
     options: [
       { title: "Visible", titleSK: "Viditeľné", value: "show", options: [] },
@@ -263,11 +264,16 @@ export const data: Data[] = [
   },
   {
     title: "floor extension",
-    titleSK: "floor extension",
+    titleSK: "Predĺžená plocha",
     moreStep: false,
     options: [
-      { title: "Enable", titleSK: "Enable", value: "enable", options: [] },
-      { title: "Disable", titleSK: "Disable", value: "disable", options: [] },
+      { title: "Enable", titleSK: "Aktivované", value: "enable", options: [] },
+      {
+        title: "Disable",
+        titleSK: "Deaktivované",
+        value: "disable",
+        options: [],
+      },
     ],
   },
 ];

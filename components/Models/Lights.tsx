@@ -39,9 +39,9 @@ const Lights = () => {
           <Light
             visible={!(length <= 6)}
             rotation-x={Math.PI * 0.5}
-            position={[-1, -0.06, 0.992]}
+            position={[-1, -0.06, 1.005]}
           />
-          <Light rotation-x={Math.PI * 0.5} position={[-0.65, -0.06, 0.992]} />
+          <Light rotation-x={Math.PI * 0.5} position={[-0.65, -0.06, 1.005]} />
         </group>
       ) : (
         <group
@@ -53,9 +53,9 @@ const Lights = () => {
           <Light
             visible={!(length <= 6)}
             rotation-x={-Math.PI * 0.5}
-            position={[-1, -0.06, 1.478]}
+            position={[-1, -0.06, 1.469]}
           />
-          <Light rotation-x={-Math.PI * 0.5} position={[-0.65, -0.06, 1.478]} />
+          <Light rotation-x={-Math.PI * 0.5} position={[-0.65, -0.06, 1.469]} />
         </group>
       )}
     </>

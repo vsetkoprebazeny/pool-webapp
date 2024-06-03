@@ -27,14 +27,14 @@ const Extend: React.FC<Props> = (props) => {
 
   let positionZ =
     globalState.length === 7
-      ? 0.125
+      ? 0.275
       : globalState.length === 6
-      ? 0.28
+      ? 0.43
       : globalState.length === 5
-      ? 0.39
+      ? 0.54
       : globalState.length === 4
-      ? 0.53
-      : 0;
+      ? 0.68
+      : 0.15;
 
   return (
     <>
@@ -74,23 +74,23 @@ const Extend: React.FC<Props> = (props) => {
         </group>
         <group position={[globalState.width === 3 ? 0 : 1.1, 0, 0]}>
           {extendRightRow > 0 && <SideTile {...props} position-x={17.35} />}
-          {extendRightRow > 1 && <SideTileTwo {...props} position-x={18.13} />}
+          {extendRightRow > 1 && <SideTileTwo {...props} position-x={18.14} />}
           {extendRightRow > 2 && (
-            <SideTile rotation-y={Math.PI * 1} {...props} position-x={17.3} />
+            <SideTile rotation-y={Math.PI * 1} {...props} position-x={17.305} />
           )}
           {extendRightRow > 3 && (
             <SideTileTwo
               rotation-y={Math.PI * 1}
               {...props}
-              position-x={18.08}
+              position-x={18.09}
             />
           )}
-          {extendRightRow > 4 && <SideTile {...props} position-x={20.49} />}
+          {extendRightRow > 4 && <SideTile {...props} position-x={20.5} />}
           {extendRightRow > 5 && (
             <SideTileTwo
               {...props}
               rotation-y={Math.PI * 1}
-              position-x={19.64}
+              position-x={19.66}
             />
           )}
         </group>
@@ -107,7 +107,7 @@ const Extend: React.FC<Props> = (props) => {
               position-x={5.01}
             />
           )}
-          {extendLeftRow > 4 && <SideTile {...props} position-x={5.84} />}
+          {extendLeftRow > 4 && <SideTile {...props} position-x={5.85} />}
           {extendLeftRow > 5 && (
             <SideTileTwo
               {...props}

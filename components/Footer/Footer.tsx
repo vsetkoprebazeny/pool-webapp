@@ -14,7 +14,7 @@ const Footer = () => {
         ) : (
           <>
             Všetky práva vyhradené © 2024 | Všetko pre bazény <span>by</span>{" "}
-            EGEA
+            EGEA Plus S.R.O
           </>
         )}
       </h1>

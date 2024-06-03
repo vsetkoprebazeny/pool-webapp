@@ -40,17 +40,34 @@ const Setup = () => {
           <Pool />
         </Suspense>
       </group>
-      <Umbrella scale={0.06} position-z={0.6} rotation-y={Math.PI * 1} />
-      <Chair
-        rotation-y={-Math.PI * 1}
-        scale={0.13}
-        position={[0.18, 0.018, 0.65]}
-      />
-      <Chair
-        rotation-y={-Math.PI * 1}
-        scale={0.13}
-        position={[-0.18, 0.018, 0.65]}
-      />
+      <group visible={globalState.extendValue === 6}>
+        <group
+          visible={
+            globalState.extendDirection === "left" ||
+            globalState.extendDirection === "right"
+          }
+        >
+          <group
+            rotation-y={
+              globalState.extendDirection === "right"
+                ? Math.PI * 1
+                : Math.PI * 0
+            }
+          >
+            <Umbrella scale={0.06} position-z={0.6} rotation-y={Math.PI * 1} />
+            <Chair
+              rotation-y={-Math.PI * 1}
+              scale={0.13}
+              position={[0.18, 0.018, 0.65]}
+            />
+            <Chair
+              rotation-y={-Math.PI * 1}
+              scale={0.13}
+              position={[-0.18, 0.018, 0.65]}
+            />
+          </group>
+        </group>
+      </group>
       <TechincalHouse
         visible={globalState["technology house"] === "show"}
         scale={0.2}

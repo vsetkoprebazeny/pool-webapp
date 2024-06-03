@@ -224,14 +224,14 @@ export function Pool(props: JSX.IntrinsicElements["group"]) {
 
   let showerFloorPositionZ =
     length === 7
-      ? 3.5
+      ? 2.57
       : length === 6
-      ? 3.56
+      ? 2.71
       : length === 5
-      ? 3.61
+      ? 2.83
       : length === 4
-      ? 3.66
-      : 3.45;
+      ? 2.97
+      : 2.43;
 
   const foil = useRef<THREE.Mesh>(null);
 
@@ -241,7 +241,7 @@ export function Pool(props: JSX.IntrinsicElements["group"]) {
 
   return (
     <>
-      <Extend material={PoolMaterial.floor} />
+      <Extend />
       <group
         scale={0.1}
         position={[0, -0.9, 0]}
@@ -253,25 +253,19 @@ export function Pool(props: JSX.IntrinsicElements["group"]) {
 
         {floors === 12 ? (
           <></>
-        ) : direction === "left" ? (
+        ) : direction === "right" ? (
           <group
             visible={!(globalState.shower === undefined)}
-            position={[width === 3 ? -8.9 : -9.9, 0, showerFloorPositionZ]}
+            position={[width === 3 ? -0.16 : 0.93, 0, showerFloorPositionZ]}
           >
-            <ShowerFloor
-              material={materials["Material.002"]}
-              material-map={floorMaterial[floors]}
-            />
+            <ShowerFloor />
           </group>
         ) : (
           <group
             visible={!(globalState.shower === undefined)}
-            position={[width === 3 ? -0.57 : 0.4, 0, showerFloorPositionZ]}
+            position={[width === 3 ? -9.3 : -10.5, 0, showerFloorPositionZ]}
           >
-            <ShowerFloor
-              material={materials["Material.002"]}
-              material-map={floorMaterial[floors]}
-            />
+            <ShowerFloor />
           </group>
         )}
 
@@ -284,7 +278,7 @@ export function Pool(props: JSX.IntrinsicElements["group"]) {
           material-normalScale={[0.2, 0.2]}
           position={[12.3, 9.05, -1]}
           rotation={[Math.PI, 0, Math.PI]}
-          scale={[width > 3 ? 1.6 : 1, 1, 0.6 + (length - 4) * 0.1]}
+          scale={[width > 3 ? 1.6 : 1, 1, length > 6 ? 1 : 0.8]}
         />
 
         <mesh

@@ -40,6 +40,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: "dev@wavenet.sk",
       to: process.env.SMTP_RECIVE_MAIL,
+      cc: "dopyt@egea.sk,egea@egea.sk",
       subject: `Žiadosť o cenovú ponuku`,
       html: `
       <!DOCTYPE html>

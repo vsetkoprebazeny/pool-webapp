@@ -24,8 +24,11 @@
     user-select: none;
     background-image: url(/logo.png);
     background-repeat: no-repeat;
-    background-size: 420px 100px;
+    background-size: 220px 50px;
     background-position: center;
+    @include lg {
+      background-size: 420px 100px;
+    }
   }
 }
 

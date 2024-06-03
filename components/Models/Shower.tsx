@@ -32,39 +32,39 @@ export function Shower(props: JSX.IntrinsicElements["group"]) {
 
   let leftFloor =
     length === 7
-      ? 0.08
+      ? 0.17
       : length === 6
-      ? 0.08
+      ? 0.16
       : length === 5
-      ? 0.07
+      ? 0.15
       : length === 4
-      ? 0.07
-      : 0.09;
+      ? 0.13
+      : 0.19;
 
   let rightFloor =
     length === 7
-      ? 0.02
+      ? 0.11
       : length === 6
-      ? 0.01
+      ? 0.1
       : length === 5
-      ? 0.01
+      ? 0.09
       : length === 4
-      ? 0
-      : 0.02;
+      ? 0.08
+      : 0.13;
 
-  let leftPositionZ = width === 3 ? 0.706 : 0.606;
-  let rightPositionZ = width === 3 ? 1.77 : 1.87;
+  let leftPositionZ = width === 3 ? 0.606 : 0.486;
+  let rightPositionZ = width === 3 ? 1.872 : 1.982;
 
   return (
     <group
       visible={!(shower === undefined)}
       scale={0.1}
       position={[
-        condition === "left" ? leftFloor : rightFloor,
+        condition === "right" ? rightFloor : leftFloor,
         0.01,
-        condition === "left" ? leftPositionZ : rightPositionZ,
+        condition === "right" ? rightPositionZ : leftPositionZ,
       ]}
-      rotation-y={condition === "left" ? Math.PI * 1.5 : Math.PI * 0.5}
+      rotation-y={condition === "right" ? Math.PI * 0.5 : Math.PI * 1.5}
       {...props}
       dispose={null}
     >

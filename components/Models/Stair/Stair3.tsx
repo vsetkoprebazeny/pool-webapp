@@ -199,6 +199,8 @@ export function Stair3(props: JSX.IntrinsicElements["group"]) {
         geometry={nodes.Stair.geometry}
         material={materials["Material.001"]}
         material-map={tilesMap}
+        material-metalness={1}
+        material-roughness={1}
         material-color={"white"}
         position={[-0.615, 0.249, -1.376]}
         scale={0.025}
@@ -210,11 +212,11 @@ export function Stair3(props: JSX.IntrinsicElements["group"]) {
           geometry={nodes.stepOne.geometry}
           material={materials.Material002}
           material-normalMap={normal}
-          material-normalScale={[1.2, 1.2]}
-          material-roughness={0.3}
           material-color={colors[globalState["anti slip pads"]!]}
           position={[-1.47, 1.161, -0.206]}
           scale={[0.8, 1, 0.92]}
+          material-roughness={0}
+          material-metalness={0}
         />
         <mesh
           receiveShadow

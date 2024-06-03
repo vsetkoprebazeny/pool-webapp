@@ -17,11 +17,11 @@ const Header = () => {
       <h1>
         {code === "GB" ? (
           <>
-            POOL CONFIGURATOR <span>by</span> EGEA
+            POOL CONFIGURATOR <span>by</span> EGEA Plus S.R.O
           </>
         ) : (
           <>
-            BAZÉNOVÝ KONFIGURÁTOR <span>od</span> EGEA
+            BAZÉNOVÝ KONFIGURÁTOR <span>od</span> EGEA Plus S.R.O
           </>
         )}
       </h1>

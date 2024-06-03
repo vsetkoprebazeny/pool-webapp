@@ -1,31 +1,30 @@
 import * as THREE from "three";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useSnapshot } from "valtio";
-import { store } from "../../../store";
-import { useEffect, useState } from "react";
+import { store } from "@/store";
 
 type GLTFResult = GLTF & {
   nodes: {
-    Line001: THREE.Mesh;
-    stepOne: THREE.Mesh;
-    stepTwo: THREE.Mesh;
-    stepThree: THREE.Mesh;
-    stepFour: THREE.Mesh;
-    stepFive: THREE.Mesh;
+    stair: THREE.Mesh;
+    step02: THREE.Mesh;
+    step03: THREE.Mesh;
+    step04: THREE.Mesh;
+    step05: THREE.Mesh;
+    step01: THREE.Mesh;
   };
   materials: {
-    ["Material.001"]: THREE.MeshStandardMaterial;
-    Material002: THREE.MeshStandardMaterial;
+    stair: THREE.MeshStandardMaterial;
+    step: THREE.MeshStandardMaterial;
   };
 };
 
 export function Stair1(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/stair/stair1.glb") as GLTFResult;
+  const globalState = useSnapshot(store);
 
   const normal = useTexture("/stairnormals.png");
-
-  const globalState = useSnapshot(store);
 
   const colors = [
     "#fcecc8",
@@ -35,12 +34,6 @@ export function Stair1(props: JSX.IntrinsicElements["group"]) {
     "#ffffff",
     "#ffffff",
   ];
-
-  useEffect(() => {
-    normal.wrapS = normal.wrapT = THREE.RepeatWrapping;
-    normal.repeat.set(2.5, 2.5);
-    normal.needsUpdate = true;
-  }, [normal]);
 
   //tiles map
 
@@ -129,6 +122,7 @@ export function Stair1(props: JSX.IntrinsicElements["group"]) {
     perletoveElbe,
     stonelite,
   ]);
+
   let AT = globalState["alkorplan touch"];
   let ME = globalState["mozaikove elbe"];
   let PE = globalState["perletove elbe"];
@@ -194,54 +188,42 @@ export function Stair1(props: JSX.IntrinsicElements["group"]) {
   return (
     <group rotation-y={Math.PI * 1} {...props} dispose={null}>
       <mesh
-        receiveShadow
-        geometry={nodes.Line001.geometry}
-        material={materials["Material.001"]}
+        geometry={nodes.stair.geometry}
+        material={materials.stair}
         material-map={tilesMap}
-        material-color={"white"}
-        position={[0.062, 0.077, -0.157]}
-        scale={0.028}
+        material-metalness={1}
+        material-roughness={1}
+        position={[0.155, 0.093, -0.238]}
       />
-
       <group visible={globalState["anti slip pads"] !== undefined}>
         <mesh
-          receiveShadow
-          geometry={nodes.stepOne.geometry}
-          material={materials.Material002}
-          material-normalMap={normal}
-          material-normalScale={[1.2, 1.2]}
-          material-roughness={0.3}
+          geometry={nodes.step01.geometry}
+          material={materials.step}
+          position={[-0.468, 0.789, 0.336]}
           material-color={colors[globalState["anti slip pads"]!]}
-          position={[0.062, 0.077, -0.157]}
-          scale={0.028}
+          material-normalMap={normal}
+          material-roughness={0}
+          material-metalness={0}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepTwo.geometry}
-          material={materials.Material002}
-          position={[0.062, 0.077, -0.157]}
-          scale={0.028}
+          geometry={nodes.step02.geometry}
+          material={materials.step}
+          position={[-0.31, 0.626, 0.191]}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepThree.geometry}
-          material={materials.Material002}
-          position={[-0.233, 0.62, 0.117]}
-          scale={0.024}
+          geometry={nodes.step03.geometry}
+          material={materials.step}
+          position={[-0.15, 0.432, 0.042]}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepFour.geometry}
-          material={materials.Material002}
-          position={[-0.087, 0.415, -0.008]}
-          scale={0.024}
+          geometry={nodes.step04.geometry}
+          material={materials.step}
+          position={[0.011, 0.239, -0.103]}
         />
         <mesh
-          receiveShadow
-          geometry={nodes.stepFive.geometry}
-          material={materials.Material002}
-          position={[0.062, 0.22, -0.157]}
-          scale={0.025}
+          geometry={nodes.step05.geometry}
+          material={materials.step}
+          position={[0.155, 0.038, -0.238]}
         />
       </group>
     </group>

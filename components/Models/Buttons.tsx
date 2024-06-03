@@ -1,5 +1,7 @@
 import { store } from "@/store";
-import { Html } from "@react-three/drei";
+import { Circle, Html } from "@react-three/drei";
+import { useEffect, useState } from "react";
+import { DoubleSide } from "three";
 import { useSnapshot } from "valtio";
 
 type Props = {
@@ -26,6 +28,8 @@ const Buttons: React.FC<Props> = ({
   setExtendFrontRow,
 }) => {
   const { width } = useSnapshot(store);
+
+  const size = useWindowSize();
 
   const handleLeft = () => {
     store.extendDirection = "right";
@@ -77,6 +81,48 @@ const Buttons: React.FC<Props> = ({
 
   return (
     <group position={[-0.56, 0, 1.26]}>
+      <group visible={size.width! < 600}>
+        <Circle
+          onClick={handleRight}
+          scale={0.1}
+          rotation-y={Math.PI * 0.5}
+          position={[0, 0.16, width === 3 ? 0.4 : 0.5]}
+        >
+          <meshStandardMaterial
+            side={DoubleSide}
+            opacity={0.8}
+            transparent
+            color={"white"}
+          />
+        </Circle>
+        <Circle
+          onClick={handleFront}
+          scale={0.1}
+          rotation-y={Math.PI * 0.5}
+          position={[0.78, 0.22, -0.02]}
+        >
+          <meshStandardMaterial
+            side={DoubleSide}
+            opacity={0.8}
+            transparent
+            color={"white"}
+          />
+        </Circle>
+        <Circle
+          onClick={handleLeft}
+          scale={0.1}
+          rotation-y={Math.PI * 0.5}
+          position={[0, 0.22, width === 3 ? -0.45 : -0.55]}
+        >
+          <meshStandardMaterial
+            side={DoubleSide}
+            opacity={0.8}
+            transparent
+            color={"white"}
+          />
+        </Circle>
+      </group>
+
       <Html
         transform
         scale={0.12}
@@ -118,3 +164,29 @@ const Buttons: React.FC<Props> = ({
 };
 
 export default Buttons;
+
+const useWindowSize = () => {
+  const [windowSize, setWindowSize] = useState<{
+    width: number | undefined;
+    height: number | undefined;
+  }>({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return windowSize;
+};
